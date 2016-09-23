@@ -10,17 +10,10 @@ var p2p = P2PSpider({
   timeout: 5000
 });
 
+fs.fs.appendFileSync(resultFile, "start");
+
 p2p.on('metadata', function (metadata) {
-  jsonString = JSON.stringify(message);
-
-  fs.appendFile(resultFile, jsonString, function(err) {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log("The file was saved!");
-    }
-  });
-
+  console.log(metadata);
 });
 
 p2p.listen(6881, '0.0.0.0');
